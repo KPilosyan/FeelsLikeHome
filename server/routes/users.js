@@ -9,7 +9,7 @@ import { verifyToken } from "../middleware/auth.js";
 const router = express.Router();
 
 router.get("/:id", verifyToken, getUser);
-router.get(":id/partners", verifyToken, getUserPartners);
-router.patch(":id/:partnerId", verifyToken, addRemovePartner);
+router.get("/:id/partners", verifyToken, getUserPartners);
+router.patch("/:id/:partnerId", verifyToken, addRemovePartner);
 
 export default router;

@@ -1,0 +1,66 @@
+@import "../../color_variables.scss";
+
+.sideMenu {
+  --top-value: calc(#{$userImg-height} + 2 * #{$navbar-top-bottom-padding});
+
+  background-color: var(--secondary);
+  position: sticky;
+  top: var(--top-value);
+  height: calc(100vh - var(--top-value));
+
+
+  .listNav {
+    padding: 0;
+    padding-bottom: 15rem;
+
+    .listItemContainer {
+      .listItem {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1rem 0.8rem 1.1rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--background);
+        }
+
+        .sideMenuIcon {
+          display: flex;
+          font-size: 30px;
+          margin-right: 10px;
+        }
+
+        .itemText {
+          display: flex;
+        }
+      }
+    }
+
+    .itemSelected {
+      background-color: var(--main);
+      border-radius: 20% 0% 35% 0%;
+    }
+  }
+}
+
+.sideMenuIcon {
+  min-width: 25px !important;
+}
+
+.createCommunity {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  cursor: pointer;
+
+  .createBtn {
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+  }
+
+  .createCommunityText {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,0 +1,24 @@
+@import "../../color_variables.scss";
+
+.container {
+  width: 100%;
+  display: block;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: flex;
+  }
+}
+
+.leftmostColumn {
+  flex-basis: 19%;
+}
+
+.mainFeed {
+  padding-top: 2rem;
+  margin: 0 auto;
+  flex-basis: 50%;
+}
+
+.rightmostColumn {
+  flex-basis: 17%;
+}

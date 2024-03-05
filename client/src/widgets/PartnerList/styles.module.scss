@@ -1,0 +1,19 @@
+@import "../../color_variables.scss";
+
+.wrapper {
+    background-color: var(--accent2);
+    padding: 0 1.5rem 2rem 1.5rem;
+    border-radius: 0 0 0 5%;
+
+    .partnerListText {
+        color: var(--accent);
+        font-weight: 500;
+        padding: 1.5rem 0;
+    }
+
+    .partners {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

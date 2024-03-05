@@ -1,0 +1,13 @@
+@import "../color_variables.scss";
+
+.userImgBox {
+    height: $userImg-height;
+    width: $userImg-height;
+
+    .userImg {
+        object-fit: cover;
+        border-radius: 20%;
+        width: $userImg-height;
+        height: $userImg-height;
+    }
+}

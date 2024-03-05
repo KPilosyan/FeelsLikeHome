@@ -1,10 +1,10 @@
 import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setPartners } from "state";
-import FlexBetween from "./FlexBetween";
-import UserImage from "./UserImage";
+import FlexBetween from "../../helpers/FlexBetween";
+import UserImage from "../../helpers/UserImage";
+import styles from "./styles.module.scss";
 
 const Partner = ({ partnerId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
@@ -12,12 +12,6 @@ const Partner = ({ partnerId, name, subtitle, userPicturePath }) => {
   const { _id } = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const partners = useSelector((state) => state.user.partners);
-
-  const { palette } = useTheme();
-  const primaryLight = palette.primary.light;
-  const primaryDark = palette.primary.dark;
-  const main = palette.neutral.main;
-  const medium = palette.neutral.medium;
 
   const isPartner = partners.length ? partners.find((partner) => partner._id === partnerId) : false;
 
@@ -36,45 +30,34 @@ const Partner = ({ partnerId, name, subtitle, userPicturePath }) => {
 
     dispatch(setPartners({ partners: data }));
   };
-  
+
   return (
     <FlexBetween>
-      <FlexBetween gap="1rem">
-        <UserImage image={userPicturePath} size="55px" />
-        <Box
-          onClick={() => {
-            navigate(`/profile/${partnerId}`);
-            navigate(0);
-          }}
-        >
-          <Typography
-            color={main}
-            variant="h5"
-            fontWeight="500"
-            sx={{
-              "&:hover": {
-                color: palette.primary.light,
-                cursor: "pointer",
-              },
-            }}
-          >
+      <FlexBetween
+        className={styles.userInfo}
+        onClick={() => {
+          navigate(`/profile/${partnerId}`);
+        }}>
+        <UserImage image={userPicturePath} className={styles.userImage} />
+        <div>
+          <div className={styles.partnerName}>
             {name}
-          </Typography>
-          <Typography color={medium} fontSize="0.75rem">
+          </div>
+          <div className={styles.partnerSubtitle}>
             {subtitle}
-          </Typography>
-        </Box>
+          </div>
+        </div>
       </FlexBetween>
-      <IconButton
+      <button
         onClick={patchPartner}
-        sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+        className={styles.partnerIconButton}
       >
         {isPartner ? (
-          <PersonRemoveOutlined sx={{ color: primaryDark }} />
+          <PersonRemoveOutlined />
         ) : (
-          <PersonAddOutlined sx={{ color: primaryDark }} />
+          <PersonAddOutlined />
         )}
-      </IconButton>
+      </button>
     </FlexBetween>
   );
 };

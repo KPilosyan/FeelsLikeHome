@@ -1,13 +1,11 @@
-import { Box, Typography, useTheme } from "@mui/material";
 import Partner from "components/Partner";
-import WidgetWrapper from "components/WidgetWrapper";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPartners } from "state";
+import styles from "./styles.module.scss";
 
 const PartnerListWidget = ({ userId }) => {
   const dispatch = useDispatch();
-  const { palette } = useTheme();
   const token = useSelector((state) => state.token);
   const partners = useSelector((state) => state.user.partners);
 
@@ -28,17 +26,13 @@ const PartnerListWidget = ({ userId }) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <WidgetWrapper>
-      <Typography
-        color={palette.neutral.dark}
-        variant="h5"
-        fontWeight="500"
-        sx={{ mb: "1.5rem" }}
-      >
+    <div className={styles.wrapper}>
+      <div className={styles.partnerListText}>
         Partner List
-      </Typography>
-      <Box display="flex" flexDirection="column" gap="1.5rem">
-        {partners.map((partner) => (
+      </div>
+      <div className={styles.partners}>
+        {partners.length 
+        ? partners.map((partner) => (
           <Partner
             key={partner._id}
             partnerId={partner._id}
@@ -46,10 +40,11 @@ const PartnerListWidget = ({ userId }) => {
             subtitle={partner.profession}
             userPicturePath={partner.picturePath}
           />
-        ))}
-      </Box>
-    </WidgetWrapper>
+        )) 
+        : "Internal error: Unable to show partners list"}
+      </div>
+    </div>
   );
-};
+};  
 
 export default PartnerListWidget;

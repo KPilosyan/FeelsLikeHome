@@ -1,0 +1,109 @@
+@import "../../color_variables.scss";
+
+.wrapper {
+    background: var(--background-forward);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--text-secondary);
+}
+
+.postField {
+    width: 100%;
+    background-color: $color-grey-100;
+    border-radius: 2rem;
+    padding: 1.5rem;
+}
+
+.postAddOns {
+    margin: 16px 0;
+    padding: 0 15px;
+
+    .postAddOn {
+        gap: 0.3rem;
+        cursor: pointer;
+    }
+}
+
+.dropImageBox {
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    margin-top: 13px;
+    padding: 1rem;
+
+    .deletePostImgBtn {
+        width: 15%;
+    }
+}
+
+.whoCanSeeText {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 15px;
+    color: var(--text-secondary);
+    justify-content: left;
+}
+
+.iconBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text-secondary);
+    color: var(--background-forward);
+    margin-top: 13px;
+    width: 60px;
+    height: 60px;
+    border-radius: 13%;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--main);
+        border-radius: 20%;
+    }
+}
+
+.postVisibilitySelect {
+    width: 18rem;
+}
+
+.icon {
+    font-size: 22px;
+    justify-content: center;
+}
+
+.selectVisAndPost {
+    position: relative;
+
+    .postButton {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        padding: 7px;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        background: var(--main);
+        color: white;
+        border-radius: 5px;
+        transition: all 300ms;
+    }
+
+    .postButton:hover {
+        transform: scale(1);
+        letter-spacing: 1px;
+        background: white;
+        color: var(--main);
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.57);
+    }
+}
+
+.imgDropzone {
+    border: 2px dashed var(--accent);
+    padding: 1rem;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

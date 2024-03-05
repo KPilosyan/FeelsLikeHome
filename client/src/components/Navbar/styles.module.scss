@@ -1,0 +1,95 @@
+@import "../../color_variables.scss";
+
+.wrapper {
+    padding: $navbar-top-bottom-padding 2.5%;
+    background-color: var(--secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    .leftside {
+        gap: 1.75rem;
+
+        .logo {
+            font-weight: bold;
+            font-size: clamp(1rem, 2rem, 2.25rem);
+            color: var(--border);
+
+            &:hover {
+                color: var(--accent);
+                cursor: pointer;
+            }
+        }
+
+        .searchBox {
+            background-color: $color-grey-100;
+            border-radius: 9px;
+            gap: 0;
+            display: flex;
+            padding: 0.2rem 0.7rem;
+        }
+
+        .searchInput {
+            width: 26rem;
+        }
+
+        .searchIcon {
+            color: $color-grey-300;
+        }
+    }
+
+    .rightside {
+        gap: 1.3rem;
+
+        .iconBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--accent2);
+            color: var(--secondary);
+            width: 38px;
+            height: 38px;
+            border-radius: 35%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--accent);
+                border-radius: 20%;
+            }
+        }
+
+        .icon {
+            font-size: 22px;
+            justify-content: center;
+        }
+    }
+
+    .mobileWrapper {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        z-index: 10;
+        max-width: 500px;
+        min-width: 300px;
+        background-color: violet;
+
+        .closeIcon {
+            display: flex; 
+            justify-content: flex-end;
+            padding: 1rem;
+        }
+
+        .menuItems {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+
+            .mobileIcon {
+                font-size: 25px;
+            }
+        }
+    }
+}

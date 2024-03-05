@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
-import PostWidget from "./PostWidget";
+import PostWidget from "../Post/index";
 
 const PostsWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   return (
     <>
-      {posts.map(
+      {posts.length ? posts.map(
         ({
           _id,
           userId,
@@ -65,7 +65,8 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             comments={comments}
           />
         )
-      )}
+      ) : 
+      <div>Internal Error: Unable to load posts</div>}
     </>
   );
 };

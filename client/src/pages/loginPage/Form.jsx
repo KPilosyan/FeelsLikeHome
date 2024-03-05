@@ -1,11 +1,7 @@
 import { useState } from "react";
 import {
-  Box,
   Button,
   TextField,
-  useMediaQuery,
-  Typography,
-  useTheme,
 } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
@@ -14,21 +10,25 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
-import FlexBetween from "components/FlexBetween";
+import FlexBetween from "helpers/FlexBetween";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
+
+const trimTransform = value => (value ? value.trim() : value);
 
 const registerSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  password: yup.string().required("required"),
-  location: yup.string().required("required"),
-  profession: yup.string().required("required"),
-  picture: yup.string().required("required"),
+  firstName: yup.string().transform(trimTransform).required("required"),
+  lastName: yup.string().transform(trimTransform).required("required"),
+  email: yup.string().email("invalid email").transform(trimTransform).required("required"),
+  password: yup.string().transform(trimTransform).required("required"),
+  location: yup.string().transform(trimTransform).required("required"),
+  profession: yup.string().transform(trimTransform).required("required"),
+  picture: yup.string().transform(trimTransform).required("required"),
 });
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email("invalid email").required("required"),
-  password: yup.string().required("required"),
+  email: yup.string().email("invalid email").transform(trimTransform).required("required"),
+  password: yup.string().transform(trimTransform).required("required"),
 });
 
 const initialValuesRegister = {
@@ -48,15 +48,12 @@ const initialValuesLogin = {
 
 const Form = () => {
   const [pageType, setPageType] = useState("login");
-  const { palette } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
-    // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
@@ -119,14 +116,7 @@ const Form = () => {
         resetForm,
       }) => (
         <form onSubmit={handleSubmit}>
-          <Box
-            display="grid"
-            gap="30px"
-            gridTemplateColumns="repeat(4, minmax(0, 1fr))"
-            sx={{
-              "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-            }}
-          >
+          <div className={styles.wrapper}>
             {isRegister && (
               <>
                 <TextField
@@ -139,7 +129,7 @@ const Form = () => {
                     Boolean(touched.firstName) && Boolean(errors.firstName)
                   }
                   helperText={touched.firstName && errors.firstName}
-                  sx={{ gridColumn: "span 2" }}
+                  className={classNames(styles.name, styles.lastNameField)}
                 />
                 <TextField
                   label="Last Name"
@@ -149,7 +139,7 @@ const Form = () => {
                   name="lastName"
                   error={Boolean(touched.lastName) && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
-                  sx={{ gridColumn: "span 2" }}
+                  className={classNames(styles.name, styles.lastNameField)}
                 />
                 <TextField
                   label="Location"
@@ -159,7 +149,7 @@ const Form = () => {
                   name="location"
                   error={Boolean(touched.location) && Boolean(errors.location)}
                   helperText={touched.location && errors.location}
-                  sx={{ gridColumn: "span 4" }}
+                  className={classNames(styles.field, styles.locationField)}
                 />
                 <TextField
                   label="Profession"
@@ -171,15 +161,11 @@ const Form = () => {
                     Boolean(touched.profession) && Boolean(errors.profession)
                   }
                   helperText={touched.profession && errors.profession}
-                  sx={{ gridColumn: "span 4" }}
+                  className={classNames(styles.field, styles.professionField)}
                 />
-                <Box
-                  gridColumn="span 4"
-                  border={`1px solid ${palette.neutral.medium}`}
-                  borderRadius="5px"
-                  p="1rem"
-                >
-                  <Dropzone
+                <div className={styles.imgText}> Add profile picture </div>
+                <div className={styles.imgUpload}>
+                  <Dropzone 
                     acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
                     onDrop={(acceptedFiles) =>
@@ -187,25 +173,20 @@ const Form = () => {
                     }
                   >
                     {({ getRootProps, getInputProps }) => (
-                      <Box
-                        {...getRootProps()}
-                        border={`2px dashed ${palette.primary.main}`}
-                        p="1rem"
-                        sx={{ "&:hover": { cursor: "pointer" } }}
-                      >
+                      <div {...getRootProps()} className={styles.dropzone}>
                         <input {...getInputProps()} />
                         {!values.picture ? (
                           <p>Add Picture Here</p>
                         ) : (
                           <FlexBetween>
-                            <Typography>{values.picture.name}</Typography>
+                            <div>{values.picture.name}</div>
                             <EditOutlinedIcon />
                           </FlexBetween>
                         )}
-                      </Box>
+                      </div>
                     )}
                   </Dropzone>
-                </Box>
+                </div>
               </>
             )}
 
@@ -217,7 +198,7 @@ const Form = () => {
               name="email"
               error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
-              sx={{ gridColumn: "span 4" }}
+              className={styles.field}
             />
             <TextField
               label="Password"
@@ -228,44 +209,31 @@ const Form = () => {
               name="password"
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
-              sx={{ gridColumn: "span 4" }}
+              className={styles.field}
             />
-          </Box>
+          </div>
 
           {/* BUTTONS */}
-          <Box>
+          <div>
             <Button
               fullWidth
               type="submit"
-              sx={{
-                m: "2rem 0",
-                p: "1rem",
-                backgroundColor: palette.primary.main,
-                color: palette.background.alt,
-                "&:hover": { color: palette.primary.main },
-              }}
+              className={styles.submitButton}
             >
               {isLogin ? "LOGIN" : "REGISTER"}
             </Button>
-            <Typography
+            <div
+              className={styles.signInUpSwitch}
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
                 resetForm();
               }}
-              sx={{
-                textDecoration: "underline",
-                color: palette.primary.main,
-                "&:hover": {
-                  cursor: "pointer",
-                  color: palette.primary.light,
-                },
-              }}
             >
               {isLogin
-                ? "Don't have an account? Sign Up here."
-                : "Already have an account? Login here."}
-            </Typography>
-          </Box>
+                ? "Don't have an account? Sign Up here"
+                : "Already have an account? Login here"}
+            </div>
+          </div>
         </form>
       )}
     </Formik>

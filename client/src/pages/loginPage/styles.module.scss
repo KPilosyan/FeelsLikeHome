@@ -1,8 +1,13 @@
 @import "../../color_variables.scss";
 
+.pageWrapper {
+    background-color: var(--background-backward);
+    color: var(--text-primary);
+}
+
 .header {
     width: 100%;
-    background-color: var(--background);
+    background-color: var(--secondary);
     padding: 1rem 0;
     text-align: center;
 
@@ -13,22 +18,27 @@
     }
 }
 
+.description {
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
 .loginWidget {
     width: 50%;
     padding: 2rem;
-    margin: 2rem auto;
+    margin: 0 auto;
     border-radius: 1.5rem;
-    background-color: var(--background);
-
-    .description {
-        margin-bottom: 16px;
-    }
+    background-color: var(--background-forward);
+    color: var(--text-primary);
 }
 
 .wrapper {
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    background-color: var(--background-forward);
 
     @media (min-width: $breakpoint-tablet) {
         &>div {
@@ -65,8 +75,8 @@
 button.submitButton {
     margin: 2rem 0;
     padding: 1rem;
-    background: white;
-    color: black;
+    background: var(--accent);
+    color: var(--text-primary);
 
     &:hover {
         background-color: var(--main);
@@ -75,7 +85,7 @@ button.submitButton {
 
 .signInUpSwitch {
     text-decoration: underline;
-    color: var(--accent2);
+    color: var(--text-primary);
 
     &:hover {
         cursor: pointer;

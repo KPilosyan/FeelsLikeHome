@@ -5,11 +5,31 @@ import {
 } from "@mui/icons-material";
 import { PiBellSimple } from "react-icons/pi";
 import { HiOutlineGlobeAsiaAustralia } from "react-icons/hi2";
+import { PiUsersThreeBold } from "react-icons/pi";
+import { PiLockBold } from "react-icons/pi";
+import { IoEarthSharp } from "react-icons/io5";
+
+import { HiGlobeEuropeAfrica } from "react-icons/hi2";
+
+import { MdLock } from "react-icons/md";
+
+import { FaLock } from "react-icons/fa6";
+import { FaEarthAmericas } from "react-icons/fa6";
+import { FaUsersGear } from "react-icons/fa6";
+
+import { FaUserGear } from "react-icons/fa6";
+
 import { GrGroup } from "react-icons/gr";
+import { LiaUsersCogSolid } from "react-icons/lia";
+import { PiLockKey } from "react-icons/pi";
+import { FaGlobeAmericas } from "react-icons/fa";
+
+
 import { IoImagesOutline } from "react-icons/io5";
 import { IoVideocamOutline } from "react-icons/io5";
 import { IoMdAttach } from "react-icons/io";
 import { AiOutlineAudio } from "react-icons/ai";
+import { MdPublic } from "react-icons/md";
 
 import {
   Divider,
@@ -22,6 +42,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import styles from "./styles.module.scss";
+import classNames from "classnames";
 
 const MyPostWidget = () => {
   const dispatch = useDispatch();
@@ -32,12 +53,11 @@ const MyPostWidget = () => {
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width: 768px)");
 
-  const iconList = [
-    { icon: <HiOutlineGlobeAsiaAustralia className={styles.icon} />, name: 'usergroup' },
-    { icon: <GrGroup className={styles.icon} />, name: 'chatbubble' },
-    { icon: <PiBellSimple className={styles.icon} />, name: 'bell' },
-    { icon: <PiBellSimple className={styles.icon} />, name: 'bell' },
-  ];
+  const [postVisibilityIndex, setPostVisibilityIndex] = useState(0);
+
+  const handleVisibilityClick = (item) => { 
+    setPostVisibilityIndex(item);
+  };
 
   const handlePost = async () => {
     const formData = new FormData();
@@ -58,6 +78,13 @@ const MyPostWidget = () => {
     setImage(null);
     setPost("");
   };
+
+  const iconList = [
+    { icon: <IoEarthSharp className={styles.icon} />, name: 'usergroup' },
+    { icon: <MdLock className={styles.icon} />, name: 'chatbubble' },
+    { icon: <FaUserGear className={styles.icon} />, name: 'bell' },
+    { icon: <FaUsersGear className={styles.icon} />, name: 'bell' },
+  ];
 
   return (
     <div className={styles.wrapper}>
@@ -137,7 +164,7 @@ const MyPostWidget = () => {
         </div>
       )}
 
-      <Divider />
+      <Divider className={styles.divider}/>
 
       <div className={styles.whoCanSeeText}>
         Who can see this post
@@ -147,7 +174,8 @@ const MyPostWidget = () => {
           {iconList.map((item, index) => (
             <div
               key={index}
-              className={styles.iconBox}
+              onClick={() => handleVisibilityClick(index)}
+              className={classNames(styles.iconBox, postVisibilityIndex === index && styles.visibilityIconSelected)}
             >
               {item.icon}
             </div>
@@ -158,7 +186,7 @@ const MyPostWidget = () => {
           onClick={handlePost}
           className={styles.postButton}
         >
-          {"Post"}
+          Post
         </button>
       </FlexBetween>
     </div>

@@ -1,33 +1,25 @@
 import React, { useState } from 'react';
-import CreateCommunityModal from "../CreateCommunityModal/index"
-import { IconButton } from '@mui/material';
 import { BsHouse } from "react-icons/bs";
-import { PiMoon } from "react-icons/pi";
-import { MdAddBox } from "react-icons/md";
+import { IoGitMergeOutline } from "react-icons/io5";
+import { BsWindowStack } from "react-icons/bs";
+import { BsPeople } from "react-icons/bs";
+import { PiUserFocus } from "react-icons/pi";
 import styles from "./styles.module.scss";
 import classNames from 'classnames';
 
 const SideMenu = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-  const [isCreateCommunityModalOpen, setIsCreateCommunityModalOpen] = useState(false);
 
   const handleItemClick = (item) => { 
     setSelectedItemIndex(item);
   };
 
-  const handleCreateCommunity = () => {
-    if (!isCreateCommunityModalOpen) {
-      setIsCreateCommunityModalOpen(true);
-    }
-  };
-
   const menuItems = [
     { icon: <BsHouse />, text: 'Home' },
-    // { icon: <IoAddCircleOutline />, text: 'Create Community' },
-    { icon: <PiMoon />, text: 'Join Community' },
-    { icon: <PiMoon />, text: 'My Communities' },
-    { icon: <PiMoon />, text: 'My Partners' },
-    { icon: <PiMoon />, text: 'Find Partners' },
+    { icon: <IoGitMergeOutline />, text: 'Join Community' },
+    { icon: <BsWindowStack />, text: 'My Communities' },
+    { icon: <BsPeople />, text: 'My Partners' },
+    { icon: <PiUserFocus />, text: 'Find Partners' },
   ];
 
   return (
@@ -49,18 +41,6 @@ const SideMenu = () => {
           </div>
         ))}
       </div>
-      <div className={styles.createCommunity} onClick={handleCreateCommunity}>
-        <IconButton className={styles.createBtn}>
-          <MdAddBox />
-        </IconButton>
-        <div className={styles.createCommunityText}>
-          New Community
-        </div>
-        {isCreateCommunityModalOpen &&
-          <CreateCommunityModal onClose={() => setIsCreateCommunityModalOpen(false)} />
-        }
-      </div>
-
     </div>
   );
 };

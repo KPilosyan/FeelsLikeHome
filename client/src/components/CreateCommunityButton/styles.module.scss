@@ -1,0 +1,43 @@
+.createCommunity {
+    display: flex;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    align-items: center;
+    cursor: pointer;
+
+    .createBtn {
+        display: flex;
+        align-items: center;
+        font-size: 70px;
+        color: var(--main);
+        transition: transform 800ms;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
+
+    .createCommunityText {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.btn {
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    background: var(--accent100);
+    color: var(--accent300);
+    border-radius: 5px;
+    transition: transform 200ms;
+}
+
+.btn:hover {
+    transform: rotate(10deg);
+}

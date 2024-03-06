@@ -6,6 +6,7 @@ import PostsWidget from "widgets/PostsWidget";
 import PartnerListWidget from "widgets/PartnerList/index";
 import SideMenu from "components/SideMenu";
 import styles from "./styles.module.scss";
+import CreateCommunityButton from "components/CreateCommunityButton";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:768px)");
@@ -13,7 +14,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar picturePath={picturePath}/>
+      <Navbar picturePath={picturePath} />
       <div className={styles.container}>
         <div className={styles.leftmostColumn}>
           <SideMenu userId={_id} picturePath={picturePath} />
@@ -25,6 +26,7 @@ const HomePage = () => {
         {isNonMobileScreens && (
           <div className={styles.rightmostColumn}>
             <PartnerListWidget userId={_id} />
+            <CreateCommunityButton />
           </div>
         )}
       </div>

@@ -1,12 +1,12 @@
 @import "../../color_variables.scss";
 
 .wrapper {
-    background-color: var(--accent2);
+    background-color: var(--background-forward);
     padding: 0 1.5rem 2rem 1.5rem;
     border-radius: 0 0 0 5%;
 
     .partnerListText {
-        color: var(--accent);
+        color: var(--text-primary);
         font-weight: 500;
         padding: 1.5rem 0;
     }

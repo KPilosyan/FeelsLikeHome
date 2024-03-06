@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaRegTrashCan } from "react-icons/fa6";
 import styles from "./styles.module.scss";
 import Dropzone from 'react-dropzone';
 
@@ -34,10 +35,19 @@ const CreateCommunityModal = ({ onClose }) => {
     <div className={styles.modal} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <span className={styles.close} onClick={onClose}>&times;</span>
-        <h2>Create Community</h2>
-        <label>Title: <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} /></label>
-        <label>Idea: <input type="text" value={idea} onChange={(e) => setIdea(e.target.value)} /></label>
-        <label>Industry: <input type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} /></label>
+        <div className={styles.title}>Create Community</div>
+        <label>
+          <div className={styles.fieldName}>Title:</div>
+          <input className={styles.inputField} type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </label>
+        <label>
+          <div className={styles.fieldName}>Idea:</div>
+          <input className={styles.inputField} type="text" value={idea} onChange={(e) => setIdea(e.target.value)} />
+        </label>
+        <label>
+          <div className={styles.fieldName}>Industry:</div>
+          <input className={styles.inputField} type="text" value={industry} onChange={(e) => setIndustry(e.target.value)} />
+        </label>
 
         {!coverPhoto ? (
           <>
@@ -45,7 +55,8 @@ const CreateCommunityModal = ({ onClose }) => {
             <Dropzone onDrop={handleDrop}>
               {({ getRootProps, getInputProps }) => (
                 <div {...getRootProps()} className={styles.dropzone}>
-                  <input {...getInputProps()} />
+                  <input className={styles.inputField}
+                    {...getInputProps()} />
                   <p>Drag 'n' drop or click to select</p>
                 </div>
               )}
@@ -56,7 +67,7 @@ const CreateCommunityModal = ({ onClose }) => {
             <p>Selected Cover Photo:</p>
             <img src={URL.createObjectURL(coverPhoto)} alt="Cover" />
             <button className={styles.deleteButton} onClick={handleDeleteImage}>
-              Delete Image
+              <FaRegTrashCan className={styles.deleteIcon}/>
             </button>
           </div>
         )}

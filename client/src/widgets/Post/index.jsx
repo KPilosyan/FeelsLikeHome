@@ -65,19 +65,19 @@ const PostWidget = ({
           <FlexBetween className={styles.likeAndMessageIcons}>
             <button onClick={patchLike} className={classNames(styles.btn,styles.likeButton)}>
               {isLiked ? (
-                <GoHeart className={ classNames(styles.postBottomIcons, styles.likeIconOutlined) }/>
+                <GoHeartFill className={ classNames(styles.postBottomIcons, styles.likeIconFilled) }/>
               ) : (
-                <GoHeartFill className={ classNames(styles.postBottomIcons, styles.likeIconFilled) } />
+                <GoHeart className={ classNames(styles.postBottomIcons, styles.likeIconOutlined) } />
               )}
             </button>
-            <div>{likeCount}</div>
+            <div className={styles.count}>{likeCount}</div>
           </FlexBetween>
 
           <FlexBetween className={styles.likeAndMessageIcons}>
             <button onClick={() => setIsComments(!isComments)} className={classNames(styles.btn, styles.commentButton)}>
               <BiMessageSquareDots className={ classNames(styles.postBottomIcons, styles.commentIcon) }/>
             </button>
-            <div>{comments.length}</div>
+            <div className={styles.count}>{comments.length}</div>
           </FlexBetween>
         </FlexBetween>
 

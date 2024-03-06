@@ -8,9 +8,11 @@
 }
 
 .partnerName {
-    color: var(--secondary);
+    color: var(--text-primary);
     font-size: 17px;
     font-weight: 500;
+    margin-right: 2rem;
+    width: 100%;
 
     &:hover {
         color: var(--accent);
@@ -19,7 +21,7 @@
 }
 
 .partnerSubtitle {
-    color: black;
+    color: var(--text-secondary);
     font-size: 0.75rem;
 }
 
@@ -34,7 +36,7 @@
     font-weight: 700;
     cursor: pointer;
     border: none;
-    background: #fff;
+    background: var(--background-backward);
     color: var(--accent);
     border: 2px solid var(--accent);
     text-transform: uppercase;
@@ -63,5 +65,5 @@
 }
 
 .partnerIconButton:hover {
-    color: var(--main);
+    color: var(--text-primary);
 }

@@ -22,7 +22,7 @@
         }
 
         .searchBox {
-            background-color: $color-grey-100;
+            background-color: var(--accent100);
             border-radius: 9px;
             gap: 0;
             display: flex;
@@ -31,10 +31,12 @@
 
         .searchInput {
             width: 26rem;
+            font-family: inherit;
+            color: var(--accent300);
         }
 
         .searchIcon {
-            color: $color-grey-300;
+            color: var(--accent300);
         }
     }
 
@@ -45,8 +47,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--accent2);
-            color: var(--secondary);
+            background-color: var(--accent100);
+            color: var(--accent300);
             width: 38px;
             height: 38px;
             border-radius: 35%;

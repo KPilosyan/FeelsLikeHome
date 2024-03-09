@@ -11,7 +11,7 @@ const PartnerListWidget = ({ userId }) => {
 
   const getPartners = async () => {
     const response = await fetch(
-      `${process.env.API_URL}/users/${userId}/partners`,
+      `${process.env.REACT_APP_API_URL}/users/${userId}/partners`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

@@ -31,7 +31,7 @@ const PostWidget = ({
   const likeCount = Object.keys(likes).length;
 
   const patchLike = async () => {
-    const response = await fetch(`${process.env.API_URL}/posts/${postId}/like`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -57,7 +57,7 @@ const PostWidget = ({
       {picturePath && (
         <img className={styles.partnerImg}
           alt="post"
-          src={`${process.env.API_URL}/assets/${picturePath}`}
+          src={`${process.env.REACT_APP_API_URL}/assets/${picturePath}`}
         />
       )}
       <FlexBetween className={styles.postIconsWrapper} >

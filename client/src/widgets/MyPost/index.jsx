@@ -50,7 +50,7 @@ const MyPostWidget = () => {
       formData.append("picturePath", image.name);
     }
 
-    const response = await fetch(`${process.env.API_URL}/auth/posts`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,

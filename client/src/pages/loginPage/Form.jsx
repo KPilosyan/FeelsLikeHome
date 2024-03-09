@@ -61,7 +61,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      `${process.env.API_URL}/auth/register`,
+      `${process.env.REACT_APP_API_URL}/auth/register`,
       {
         method: "POST",
         body: formData,
@@ -76,7 +76,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch(`${process.env.API_URL}/auth/login`, {
+    const loggedInResponse = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -98,6 +98,8 @@ const Form = () => {
     if (isLogin) await login(values, onSubmitProps);
     if (isRegister) await register(values, onSubmitProps);
   };
+  console.log('Aaaaaa',`${process.env.REACT_APP_API_URL}`)
+
 
   return (
     <Formik

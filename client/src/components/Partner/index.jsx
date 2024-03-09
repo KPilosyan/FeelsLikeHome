@@ -17,7 +17,7 @@ const Partner = ({ partnerId, name, subtitle, userPicturePath }) => {
 
   const patchPartner = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${_id}/${partnerId}`,
+      `${process.env.API_URL}/users/${_id}/${partnerId}`,
       {
         method: "PATCH",
         headers: {

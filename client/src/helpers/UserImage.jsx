@@ -7,7 +7,7 @@ const UserImage = ({ image }) => {
       <img
         className={styles.userImg}
         alt={image}
-        src={image ? `http://localhost:3001/assets/${image}` : unknown}
+        src={image ? `${process.env.API_URL}/assets/${image}` : unknown}
       />
     </div>
   )

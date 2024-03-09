@@ -14,7 +14,7 @@ const ProfilePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:768px)");
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    const response = await fetch(`${process.env.API_URL}/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });

@@ -48,6 +48,10 @@ app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, 'public/assets', 'favicon.ico'));
 });
 
+app.get("/favicon.png", (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/assets', 'favicon.png'));
+});
+
 /* ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/auth/posts", verifyToken, upload.single("picture"), createPost);

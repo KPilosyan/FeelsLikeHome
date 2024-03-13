@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.module.scss';
 import App from './App';
 import authReducer from './state';
 import { Provider } from 'react-redux';

@@ -98,8 +98,6 @@ const Form = () => {
     if (isLogin) await login(values, onSubmitProps);
     if (isRegister) await register(values, onSubmitProps);
   };
-  console.log('Aaaaaa',`${process.env.REACT_APP_API_URL}`)
-
 
   return (
     <Formik
@@ -118,7 +116,7 @@ const Form = () => {
         resetForm,
       }) => (
         <form onSubmit={handleSubmit}>
-          <div className={styles.wrapper}>
+          <div className={styles.formWrapper}>
             {isRegister && (
               <>
                 <TextField
@@ -165,7 +163,6 @@ const Form = () => {
                   helperText={touched.profession && errors.profession}
                   className={classNames(styles.field, styles.professionField)}
                 />
-                <div className={styles.imgText}> Add profile picture </div>
                 <div className={styles.imgUpload}>
                   <Dropzone 
                     acceptedFiles=".jpg,.jpeg,.png"

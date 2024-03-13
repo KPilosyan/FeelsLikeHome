@@ -15,7 +15,7 @@ const LoginPage = () => {
           Share your ideas and invite people to partner up with you. Develop your idea together.
           Join a community and help others to bring their ideas into life.
         </div>
-      <div className={styles.loginWidget}>
+      <div className={styles.loginAndRegisterWidget}>
         <Form />
       </div>
     </div>

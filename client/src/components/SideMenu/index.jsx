@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import { BsHouse } from "react-icons/bs";
 import { IoGitMergeOutline } from "react-icons/io5";
 import { BsWindowStack } from "react-icons/bs";
 import { BsPeople } from "react-icons/bs";
 import { PiUserFocus } from "react-icons/pi";
-import styles from "./styles.module.scss";
+import { TbLogout2 } from "react-icons/tb";
+import { setLogout } from 'state';
 import classNames from 'classnames';
+import styles from "./styles.module.scss";
 
 const SideMenu = () => {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const dispatch = useDispatch();
 
   const handleItemClick = (item) => { 
     setSelectedItemIndex(item);
@@ -40,6 +44,14 @@ const SideMenu = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className={styles.logout} onClick={() => dispatch(setLogout())}>
+        <div className={styles.logoutBtn}>
+          <TbLogout2 />
+        </div>
+        <div className={styles.logoutText}>
+          Log Out
+        </div>
       </div>
     </div>
   );

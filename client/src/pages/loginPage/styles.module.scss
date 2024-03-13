@@ -26,16 +26,17 @@
     padding: 2rem;
 }
 
-.loginWidget {
+.loginAndRegisterWidget {
     width: 50%;
     padding: 2rem;
     margin: 0 auto;
     border-radius: 1.5rem;
     background-color: var(--background-forward);
     color: var(--text-primary);
+    font-family: inherit;
 }
 
-.wrapper {
+.formWrapper {
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -55,16 +56,11 @@
         grid-column: span 4;
     }
 
-    .imgText {
-        margin-left: 5px;
-        color: var(--text-secondary);
-    }
-
     .imgUpload {
         grid-column: span 4;
         border: 2px dashed var(--accent);
         border-radius: 5px;
-        color: var(--text-secondary);
+        color: var(--text-primary);
 
         .dropzone {
             padding: 1rem;

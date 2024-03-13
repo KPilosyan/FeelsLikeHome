@@ -3,6 +3,11 @@
 ### Live Demo:
 https://feels-like-home-client.vercel.app/
 
+The passwords are hashed with bcryptjs. If you do not wish to register, you may use a testing account with the following credentials:
+
+email: test@gmail.com
+password: test
+
 ### Overview
 FeelsLikeHome is a social network for IT Specialists to help each other turn creative ideas into reality. Many professionals have innovative ideas that never come to life because they do not have the proper support or guidance. FeelsLikeHome allows the users to partner up with each other over an idea and bring it to life. There is NO MONEY
 involved; this is NOT a job-searching platform - our users come together over an idea and make the idea their primary motivation. 
@@ -22,3 +27,5 @@ A user can form new communities over his/her idea. There should be a maximum of 
 * Node.js
 * Express.js
 * MongoDB
+* JsonWebToken
+* BycriptJs

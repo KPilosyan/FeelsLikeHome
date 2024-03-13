@@ -5,7 +5,7 @@ https://feels-like-home-client.vercel.app/
 
 The passwords are hashed with bcryptjs. If you do not wish to register, you may use a testing account with the following credentials:
 
-email: test@gmail.com
+email: test@gmail.com <br>
 password: test
 
 ### Overview

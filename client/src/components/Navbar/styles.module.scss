@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Hachi+Maru+Pop&family=Pacifico&family=Press+Start+2P&family=Shadows+Into+Light&display=swap');
 @import "../../color_variables.scss";
 
 .wrapper {
     padding: $navbar-top-bottom-padding 2.5%;
-    background-color: var(--secondary);
+    background-color: var(--accent2);
     position: sticky;
     top: 0;
     z-index: 1;
@@ -11,13 +12,22 @@
         gap: 1.75rem;
 
         .logo {
-            font-weight: bold;
-            font-size: clamp(1rem, 2rem, 2.25rem);
-            color: var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
 
-            &:hover {
-                color: var(--accent);
-                cursor: pointer;
+            .logoText {
+                display: flex;
+                font-family: "Hachi Maru Pop", cursive;
+                font-size: 24px;
+                margin-right: 20px;
+                margin-bottom: 7px;
+                color: var(--main);
+
+                &:hover {
+                    color: var(--accent);
+                }
             }
         }
 
@@ -78,7 +88,7 @@
         background-color: violet;
 
         .closeIcon {
-            display: flex; 
+            display: flex;
             justify-content: flex-end;
             padding: 1rem;
         }

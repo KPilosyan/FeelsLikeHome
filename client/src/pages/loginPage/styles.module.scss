@@ -1,21 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Hachi+Maru+Pop&family=Pacifico&family=Press+Start+2P&family=Shadows+Into+Light&display=swap');
 @import "../../color_variables.scss";
 
 .pageWrapper {
     background-color: var(--background-backward);
     color: var(--text-primary);
     min-height: 100vh;
+    padding-bottom: 55px;
 }
 
 .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    background-color: var(--secondary);
+    background-color: var(--accent2);
     padding: 1rem 0;
     text-align: center;
 
-    .logo {
-        font-weight: bold;
+    .logoText {
+        display: flex;
+        font-family: "Hachi Maru Pop", cursive;
         font-size: 32px;
-        color: var(--accent);
+        margin-bottom: 7px;
+        color: var(--main);
+    }
+
+    .logoImg {
+        display: flex;
+        width: 50px;
+        padding-right: 1rem;
     }
 }
 

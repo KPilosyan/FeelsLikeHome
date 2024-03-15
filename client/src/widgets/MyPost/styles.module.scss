@@ -10,7 +10,7 @@
 .postField {
     width: 100%;
     background-color: var(--text-secondary);
-    color: var(--accent300);
+    color: var(--text-primary);
     border-radius: 2rem;
     padding: 1.1rem;
     font-family: inherit;
@@ -94,6 +94,7 @@
         width: 100px;
         padding: 7px;
         margin-top: auto;
+        margin-left: 10px;
         font-size: 20px;
         font-weight: 500;
         cursor: pointer;

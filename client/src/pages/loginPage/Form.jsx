@@ -64,6 +64,7 @@ const Form = () => {
       `${process.env.REACT_APP_API_URL}/auth/register`,
       {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: formData,
       }
     );
@@ -164,7 +165,7 @@ const Form = () => {
                   className={classNames(styles.field, styles.professionField)}
                 />
                 <div className={styles.imgUpload}>
-                  <Dropzone 
+                  <Dropzone
                     acceptedFiles=".jpg,.jpeg,.png"
                     multiple={false}
                     onDrop={(acceptedFiles) =>

@@ -50,7 +50,9 @@ const Navbar = ({ picturePath }) => {
     <FlexBetween className={styles.wrapper} >
       <FlexBetween className={styles.leftside}>
         <div className={styles.logo} onClick={() => navigate("/home")}>
-          FeelsLikeHome
+          <div className={styles.logoText}>
+            FeelsLikeHome
+          </div>
         </div>
         {isNonMobileScreens && (
           <div className={styles.searchBox}>

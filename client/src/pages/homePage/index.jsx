@@ -17,7 +17,7 @@ const HomePage = () => {
       <Navbar picturePath={picturePath} />
       <div className={styles.container}>
         <div className={styles.leftmostColumn}>
-          <SideMenu userId={_id} picturePath={picturePath} />
+          <SideMenu userId={_id} />
         </div>
         <div className={styles.mainFeed}>
           <MyPostWidget />
